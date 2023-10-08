@@ -1,0 +1,40 @@
+<?php
+
+use App\Models\Course;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use function Pest\Laravel\get;
+
+uses(RefreshDatabase::class);
+
+it('shows courses overview', function () {
+    // Arrange
+
+    // Act
+
+    // Assert
+});
+
+it('shows only released courses', function() {
+    // Arrange
+    Course::factory()->create(['title' => 'Course A', 'description' => 'Description Course A']);
+    Course::factory()->create(['title' => 'Course B', 'description' => 'Description Course B']);
+    Course::factory()->create(['title' => 'Course C', 'description' => 'Description Course C']);
+
+    // Act & Assert
+    get(route('home'))->assertSee([
+        'Course A',
+        'Description Course A',
+        'Course B',
+        'Description Course B',
+        'Course C',
+        'Description Course C',
+    ]);
+});
+
+it('shows courses by release date', function() {
+    // Arrange
+
+    // Act
+
+    // Assert
+});
