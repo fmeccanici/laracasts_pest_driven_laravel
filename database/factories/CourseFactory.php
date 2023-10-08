@@ -19,4 +19,13 @@ class CourseFactory extends Factory
             'updated_at' => Carbon::now(),
         ];
     }
+
+    public function released(Carbon $date = null): self
+    {
+        return $this->state(
+            fn (array $attributes) => [
+                'released_at' => $date ?? Carbon::now(),
+            ]
+        );
+    }
 }
