@@ -13,6 +13,8 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
+            'title' => $this->faker->sentence,
+            'description' => $this->faker->paragraph,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
