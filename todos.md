@@ -6,7 +6,7 @@
 - [ ] Purchase a course
 
 ## Member can
-- [ ] Log in (page)
+- [x] Log in (page)
 - [x] See purchased courses (page)
 - [ ] Watch purchased course (page)
 

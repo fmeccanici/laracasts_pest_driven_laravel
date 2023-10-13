@@ -30,3 +30,10 @@ it('gives back successful response for dashboard page', function() {
     get(route('pages.dashboard', $course))
         ->assertOk();
 });
+
+it('does not find JetStream registration page', function() {
+    // Arrange & Act
+    get('register')
+        ->assertNotFound();
+});
+
