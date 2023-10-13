@@ -9,4 +9,8 @@ class Video extends Model
 {
     use HasFactory;
 
+    public function getReadableDuration(): string
+    {
+        return \Str::of($this->duration_in_mins)->append('min');
+    }
 }
