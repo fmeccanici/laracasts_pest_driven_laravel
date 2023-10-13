@@ -14,7 +14,11 @@ class CourseFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence,
+            'slug' => $this->faker->slug,
+            'tagline' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
+            'image' => 'https://source.unsplash.com/random/800x600',
+            'learnings' => ['Learn A', 'Learn B', 'Learn C'],
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
