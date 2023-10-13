@@ -3,6 +3,7 @@
 use App\Models\Course;
 use App\Models\User;
 
+use App\Models\Video;
 use function Pest\Laravel\get;
 
 it('returns a successful response', function () {
@@ -37,3 +38,14 @@ it('does not find JetStream registration page', function() {
         ->assertNotFound();
 });
 
+it('gives successful response for videos page', function() {
+    // Arrange
+    $course = Course::factory()
+        ->has(Video::factory())
+        ->create();
+
+    // Act & Assert
+    loginAsUser();
+    get(route('page.course-videos', $course))
+        ->assertOk();
+});
