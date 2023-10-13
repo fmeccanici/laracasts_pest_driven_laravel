@@ -8,7 +8,7 @@
 ## Member can
 - [x] Log in (page)
 - [x] See purchased courses (page)
-- [ ] Watch purchased course (page)
+- [x] Watch purchased course (page)
 
 ## Admin can
 - [ ] Tweet about a new course release
