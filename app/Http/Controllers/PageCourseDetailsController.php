@@ -12,6 +12,8 @@ class PageCourseDetailsController extends Controller
             abort(404);
         }
 
-        return view('course-details', compact('course'));
+        $course->loadCount('videos');
+
+        return view('pages.course-details', compact('course'));
     }
 }
