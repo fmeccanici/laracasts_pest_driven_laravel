@@ -7,7 +7,7 @@
 
 ## Member can
 - [ ] Log in (page)
-- [ ] See purchased courses (page)
+- [x] See purchased courses (page)
 - [ ] Watch purchased course (page)
 
 ## Admin can
