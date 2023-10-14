@@ -12,6 +12,13 @@
             </div>
         @endif
 
+        @env('local')
+            <x-login-link
+                email="test@test.com"
+                label="Login as test user"
+                redirect-url="{{ route('pages.dashboard') }}"
+            />
+        @endenv
         <form method="POST" action="{{ route('login') }}">
             @csrf
 

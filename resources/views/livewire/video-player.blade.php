@@ -18,7 +18,7 @@
                 @if($this->isCurrentVideo($courseVideo))
                     {{ $courseVideo->title }}
                 @else
-                    <a href="{{ route('page.course-videos', $courseVideo) }}">
+                    <a href="{{ route('page.course-videos', ['course' => $courseVideo->course,  'video' => $courseVideo]) }}">
                         {{ $courseVideo->title }}
                     </a>
                 @endif
