@@ -15,7 +15,7 @@ class AddGivenCoursesSeeder extends Seeder
 
         Course::create([
             'slug' => 'laravel-for-beginners',
-            'title' => 'Laravel for beginners',
+            'title' => 'Laravel For Beginners',
             'tagline' => 'Learn the basics of Laravel',
             'description' => 'Learn the basics of Laravel',
             'image_name' => 'laravel-for-beginners.png',
@@ -57,7 +57,7 @@ class AddGivenCoursesSeeder extends Seeder
 
     private function isDataAlreadyGiven(): bool
     {
-        return Course::where('title', 'Laravel for beginners')->exists()
+        return Course::where('title', 'Laravel For Beginners')->exists()
                 && Course::where('title', 'Advanced Laravel')->exists()
                 && Course::where('title', 'TDD The Laravel Way')->exists();
     }
