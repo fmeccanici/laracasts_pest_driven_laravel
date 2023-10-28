@@ -31,3 +31,5 @@ Route::middleware([
         ->name('page.course-videos');
 
 });
+
+Route::webhooks('webhooks');
