@@ -2,7 +2,6 @@
 
 use App\Console\Commands\TweetAboutCourseReleaseCommand;
 use App\Models\Course;
-use Twitter;
 
 it('tweets about release for provided course', function() {
     // Arrange

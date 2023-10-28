@@ -170,6 +170,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        App\Providers\TwitterServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -184,7 +185,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Twitter' => \App\TwitterFacade::class,
+        'Twitter' => \App\Services\Twitter\TwitterFacade::class,
     ])->toArray(),
 
 ];
