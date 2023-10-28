@@ -3,7 +3,7 @@
 ## Guest can
 - [x] See sources overview (page)
 - [x] See course details (page)
-- [ ] Purchase a course
+- [x] Purchase a course
 
 ## Member can
 - [x] Log in (page)
