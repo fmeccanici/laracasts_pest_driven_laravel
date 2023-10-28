@@ -33,6 +33,6 @@ class HandlePaddlePurchaseJob extends ProcessWebhookJob implements ShouldQueue
         $course = Course::where('paddle_product_id', $this->webhookCall->payload['p_product_id'])->first();
         $user->purchasedCourses()->attach($course);
 
-        \Mail::to($user->email)->send(new NewPurchaseMail());
+        \Mail::to($user->email)->send(new NewPurchaseMail($course));
     }
 }
