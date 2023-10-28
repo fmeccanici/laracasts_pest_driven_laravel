@@ -6,15 +6,16 @@ use function Pest\Laravel\post;
 
 it('stores a paddle purchase request', function() {
     // Arrange
+
     assertDatabaseCount(WebhookCall::class, 0);
 
     // Act
     post('webhooks', [
         'event_time' => '2022-09-06 11:19:25',
-        'p_country' => 'US',
+        'p_country' => 'NL',
         'p_coupon' => null,
         'p_coupon_savings' => '0',
-        'p_currency' => 'USD',
+        'p_currency' => 'EUR',
         'p_custom_data' => null,
         'p_earnings' => '{"4736":"55.5500"}',
         'p_order_id' => '422907',
