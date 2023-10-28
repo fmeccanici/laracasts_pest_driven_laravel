@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\NewPurchaseMail;
 use App\Models\Course;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -18,13 +19,20 @@ class HandlePaddlePurchaseJob extends ProcessWebhookJob implements ShouldQueue
 
     public function handle(): void
     {
-        $user = User::create([
-            'name' => $this->webhookCall->payload['name'],
-            'email' => $this->webhookCall->payload['email'],
-            'password' => bcrypt(Str::uuid()),
-        ]);
+        $user = User::where('email', $this->webhookCall->payload['email'])->first();
+
+        if (! $user)
+        {
+            $user = User::create([
+                'name' => $this->webhookCall->payload['name'],
+                'email' => $this->webhookCall->payload['email'],
+                'password' => bcrypt(Str::uuid()),
+            ]);
+        }
 
         $course = Course::where('paddle_product_id', $this->webhookCall->payload['p_product_id'])->first();
         $user->purchasedCourses()->attach($course);
+
+        \Mail::to($user->email)->send(new NewPurchaseMail());
     }
 }
