@@ -51,9 +51,9 @@ it('includes paddle checkout button', function() {
     ]);
 
     // Act & Assert
-    get(route('pages.course-details', $course))
+    get(route('page.course-details', $course))
         ->assertOk()
+        ->assertSee('Paddle.Setup({vendor: vendor-id});')
         ->assertSee('<script src="https://cdn.paddle.com/paddle/paddle.js"></script>', false)
-        ->assertSee('Paddle.Setup({ vendor: vendor-id });', false)
-        ->assertSee('<a href="#!" class="paddle_button" data-product="product-id">Buy Now!</a>', false);
+        ->assertSee('<a href="#!" data-product="product-id" data-theme="none" class="paddle_button', false);
 });

@@ -53,13 +53,13 @@ it('includes login if not logged in', function() {
         ->assertSee(route('login'));
 });
 
-it('includes logout if not logged in', function() {
+it('includes link to dashboard if logged in', function () {
     // Act & Assert
     loginAsUser();
-    get(route('pages.home'))
+    get(route('page.home'))
         ->assertOk()
-        ->assertSeeText('Logout')
-        ->assertSee(route('logout'));
+        ->assertSeeText('Dashboard')
+        ->assertSee(route('page.dashboard'));
 });
 
 it('includes courses links', function() {

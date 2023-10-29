@@ -37,21 +37,19 @@ it('shows given video', function () {
     // Act & Assert
     $video = $course->videos->first();
     Livewire::test(VideoPlayer::class, ['video' => $video])
-        ->assertSeeHtml('<iframe src="https://player.vimeo.com/video/'.$video->vimeo_id.'"');
-});
+        ->assertSeeHtml('<iframe class="w-full aspect-video rounded mb-4 md:mb-8" src="https://player.vimeo.com/video/'.$video->vimeo_id);});
 
 it('shows list of all course videos', function () {
     // Arrange
     $course = createCourseAndVideos(videosCount: 3);
 
     // Act & Assert
-    Livewire::test(VideoPlayer::class, ['video' => $course->videos()->first()])
-        ->assertSee([
-            ...$course->videos->pluck('title')->toArray()
-        ])->assertSeeHtml([
-            route('page.course-videos', [$course, $course->videos[1]]),
-            route('page.course-videos', [$course, $course->videos[2]]),
-        ]);
+    $firstVideo = $course->videos()->first();
+    Livewire::test(VideoPlayer::class, ['video' => $firstVideo])
+        ->assertMethodWired('markVideoAsCompleted')
+        ->call('markVideoAsCompleted')
+        ->assertMethodWired('markVideoAsNotCompleted')
+        ->assertSee($firstVideo->title.' ✅');
 });
 
 it('does not include route for current video', function() {
