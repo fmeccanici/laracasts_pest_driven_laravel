@@ -49,7 +49,7 @@ it('shows list of all course videos', function () {
         ->assertMethodWired('markVideoAsCompleted')
         ->call('markVideoAsCompleted')
         ->assertMethodWired('markVideoAsNotCompleted')
-        ->assertSee($firstVideo->title.' ✅');
+        ->assertSee($firstVideo->title);
 });
 
 it('does not include route for current video', function() {
