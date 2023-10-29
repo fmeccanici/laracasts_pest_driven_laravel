@@ -75,3 +75,31 @@ it('includes courses links', function() {
         ->assertSee(route('pages.course-details', $secondCourse))
         ->assertSee(route('pages.course-details', $lastCourse));
 });
+
+it('includes title', function() {
+    // Arrange
+    $expectedTitle = config('app.name') . ' - Home';
+
+    // Act & Assert
+    get(route('pages.home'))
+        ->assertOk()
+        ->assertSee("<title>$expectedTitle</title>", false);
+});
+
+it('includes social tags', function() {
+    // Arrange
+
+
+    // Act & Assert
+    get(route('pages.home'))
+        ->assertOk()
+        ->assertSee([
+            '<meta name="description" content="LaravelCasts is the leading learning platform for Laravel developers.">',
+            '<meta property="og:type" content="website">',
+            '<meta property="og:url" content="' . route('pages.home') . '">',
+            '<meta property="og:title" content="LaravelCasts">',
+            '<meta property="og:description" content="LaravelCasts is the leading learning platform for Laravel developers.">',
+            '<meta property="og:image" content="' . asset('images/social.png') . '">',
+            '<meta name="twitter:card" content="summary_large_image">',
+        ], false);
+});
