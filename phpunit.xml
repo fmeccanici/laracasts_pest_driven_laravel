@@ -23,4 +23,9 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
     </php>
+    <coverage>
+        <include>
+            <directory suffix=".php">./app</directory>
+        </include>
+    </coverage>
 </phpunit>
